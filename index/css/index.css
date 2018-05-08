@@ -1,6 +1,6 @@
-#popUpCatSel{
-	position: absolute;
-	left:16%;
-	top:11.5%;
-	display: none;
+#left{
+	float: left;
+	
 }
+
+

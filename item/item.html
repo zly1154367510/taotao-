@@ -10,7 +10,7 @@
 <body>
 	<div id='header'></div>
 	<div id='left'></div>
-	<div id="body">
+	<div id="body" >
 		<div class='row'>
 			<div class="col-md-10">
 				<ol class="breadcrumb">
@@ -19,13 +19,47 @@
 				 		<a v-bind:href="item">{{key}}</a>
 				 	</li>  
 				</ol>
+
+				<br>
+				<div class="itemList">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>图片</th>
+								<th>产品名</th>
+								<th>优惠</th>
+								<th>价格</th>
+								<th>更新时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr v-for='item in json'>
+								<td>
+									<img v-bind:src="item.image" height="200px">
+								</td>
+								<td>
+									{{item.title}}
+								</td>
+								<td>
+									{{item.sellPoint}}
+								</td>
+								<td>
+									{{item.price}}
+								</td>
+								<td>
+									{{item.updated}}
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-
 <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/item.js"></script>
 <script type="text/javascript" src=''></script>
 
 </body>

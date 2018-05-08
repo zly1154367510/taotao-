@@ -1,0 +1,14 @@
+#popUpCatSel{
+	position: absolute;
+	left:14%;
+	top:20%;
+	display: none;
+}
+
+#popUpCatSel1{
+	position: absolute;
+	left:22.5%;
+	top:20%;
+	display: none;
+}
+
