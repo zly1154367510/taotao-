@@ -1,0 +1,19 @@
+#body{
+	position: relative;
+	left: 30%;
+	width: 65%
+}
+#itemImages{
+	position: static;
+	float: left;
+}
+
+#itemDetalis{
+	position: static;
+	left: 30%
+}
+
+#itemParam{
+	position: relative;
+	
+}

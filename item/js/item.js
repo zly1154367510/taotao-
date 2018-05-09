@@ -8,7 +8,7 @@ $(document).ready(function(){
 		data:{
 			navBar:{
 				'首页':'http://localhost/shapping/index/index.html',
-				'商品':''
+				'商品列表':''
 			},
 			json:'',
 			page:1,
@@ -24,7 +24,7 @@ $(document).ready(function(){
 				dataType:"json",
 				success:function(data){
 					that.json = data.data
-					//console.log(that.json)
+					console.log(that.json)
 				}
 			})
 		},
@@ -48,7 +48,7 @@ $(document).ready(function(){
 					that.flag == false
 					var cid = this.getRequest()['cid']
 					that.page+=1 
-            		console.log("触发了")
+            		//console.log("触发了")
             		$.ajax({
             		url:"http://localhost:8082/item/"+cid+"/"+that.page,
 					type:"GET",
@@ -65,6 +65,9 @@ $(document).ready(function(){
             		})
         		}
 
+			},
+			itemDetalis:function(cid,id){
+				window.location.href="http://localhost/shapping/item/itemDetalis.html?id="+id+"&cid="+cid
 			}
 		}
 	});

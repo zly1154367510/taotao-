@@ -22,7 +22,7 @@
 
 				<br>
 				<div class="itemList">
-					<table class="table table-striped">
+					<table class="table table-striped  table-hover">
 						<thead>
 							<tr>
 								<th>图片</th>
@@ -33,24 +33,28 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr v-for='item in json'>
-								<td>
-									<img v-bind:src="item.image" height="200px">
-								</td>
-								<td>
-									{{item.title}}
-								</td>
-								<td>
-									{{item.sellPoint}}
-								</td>
-								<td>
-									{{item.price}}
-								</td>
-								<td>
-									{{item.updated}}
-								</td>
+							
+							<tr v-for='item in json' v-on:click="itemDetalis(item.cid,item.id)">
+									
+									<td>
+										<img v-bind:src="item.image" height="200px">
+										{{item.id}}
+									</td>
+									<td>
+										{{item.title}}
+									</td>
+									<td>
+										{{item.sellPoint}}
+									</td>
+									<td>
+										{{item.price}}
+									</td>
+									<td>
+										{{item.updated}}
+									</td>
+							
 							</tr>
-
+							
 						</tbody>
 					</table>
 				</div>
