@@ -1,6 +1,7 @@
 #body{
 	position: relative;
-	left: 30%;
+	float: left;
+	left:3%;
 	width: 65%
 }
 #itemImages{
@@ -16,4 +17,10 @@
 #itemParam{
 	position: relative;
 	
+}
+
+#left{
+	position:relative;
+	width: 20%;
+	float: left;
 }

@@ -46,6 +46,15 @@ $(document).ready(function(){
 				//console.log(that.sunData1)
 				$("#popUpCatSel1").show()
 			},
+			catSelHide:function(e){
+				console.log("哈哈点到了")
+				var target = $(e.target)
+				if (!target.is('#popUpCatSel') && !target.is("#popUpCatSel")) {
+					$('#popUpCatSel').hide();
+					$("#popUpCatSel1").hide()
+
+				}
+			}
 
 		}
 	});

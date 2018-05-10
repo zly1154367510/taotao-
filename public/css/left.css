@@ -3,12 +3,14 @@
 	left:14%;
 	top:20%;
 	display: none;
+	z-index: 989
 }
 
 #popUpCatSel1{
 	position: absolute;
-	left:22.5%;
+	left:21.5%;
 	top:20%;
 	display: none;
+	z-index: 999;
 }
 

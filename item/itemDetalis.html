@@ -9,7 +9,20 @@
 </head>
 <body>
 	<div id='header'></div>
-	<div id='left'></div>
+	<div id='left'>
+		<div class="panel panel-default">
+  			<div class="panel-heading">相似推荐</div>
+  			<div class="panel-body" v-for="item3 in itemSimilarJson">
+  				<img :src="item3.image" width="200px">
+  				<br>
+    			{{item3.title}}
+ 				<br>
+ 				价格:{{item3.price}}
+  			</div>
+			<hr>
+		</div>
+
+	</div>
 	<div id="body">
 		<div class='row'>
 			<div class="col-md-12">
@@ -33,7 +46,7 @@
 					<hr>
 					<br><br><br><br><br><br><br><br><br><br><br><br>
 					<ul class="nav nav-tabs">
-						<li role="presentation" v-for='item in itemParamGroupJson' v-on:click="requestParamValue(item.id)"><a >{{item.groupName}}</a></li>
+						<li role="presentation" v-for='item in itemParamGroupJson' v-on:click="requestParamValue(item.id)" class="paramKey"><a >{{item.groupName}}</a></li>
 						 <br>
 						 <br>
 					</ul>
@@ -42,7 +55,21 @@
 						  <div v-for='item2 in itemParamKey'>
 						  	<div v-for="item1 in itemJson[0].tbItemParamValues" v-if='item2.id == item1.paramId' v-if='item2.id != null'>
 						  		<div id='removee'>
-						  			{{item2.paramName}}:{{item1.paramValue}}
+						  			<table class="table">
+						  				
+						  				<tbody>
+						  					<tr>
+						  						<td>
+						  							{{item2.paramName}}
+						  						</td>
+						  						<td>
+						  							{{item1.paramValue}}
+						  						</td>
+						  					</tr>
+						  				</tbody>
+						  				
+						  			</table>
+						  			
 						  		</div>
 						  	</div>
 						  </div>

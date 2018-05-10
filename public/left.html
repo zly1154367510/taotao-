@@ -7,7 +7,7 @@
 
 </style>
 </head>
-<body>
+<body v-on:click="catSelHide()">
 	
 	<div class="catSel">
 		<div class="container-fluid">
@@ -43,7 +43,7 @@
 		
 		<div id="popUpCatSel1">
 			<ul class='list-group'>
-				<li v-for="va in sunData1">
+				<li v-for="va in sunData1" class="list-group-item">
 					<a v-on:click="hideSel(va.id)"><h4>{{va.name}}</h4></a>
 				</li>
 			</ul>
