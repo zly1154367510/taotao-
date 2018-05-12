@@ -17,16 +17,22 @@ $(document).ready(function(){
 		mounted:function(){
 			window.addEventListener('scroll',this.lazyLoad)
 			var cid = this.getRequest()['cid']
-			var that = this
-			$.ajax({
-				url:"http://localhost:8082/item/"+cid+"/"+that.page,
-				type:"GET",
-				dataType:"json",
-				success:function(data){
-					that.json = data.data
-					console.log(that.json)
-				}
-			})
+			console.log(cid)
+			if (cid != undefined) {
+				var that = this
+				$.ajax({
+					url:"http://localhost:8082/item/"+cid+"/"+that.page,
+					type:"GET",
+					dataType:"json",
+					success:function(data){
+						that.json = data.data
+						console.log(that.json)
+					}
+				})
+			} 
+			
+			
+		
 		},
 		methods:{
 			getRequest:function(){

@@ -17,7 +17,7 @@
 					  </li>
 					  <li v-for="value in data" class="list-group-item" >
 					  <!-- v-on:mouseout="hideSel()"-->
-					  	<span v-on:mouseover="showSel(value)">{{value.name}}</span>
+					  	<span v-on:mouseover="showSel(value.id)">{{value.name}}</span>
 					  </li>
 					</ul>
 				</div><!--col-md-4-->
@@ -28,19 +28,34 @@
 				</div> -->
 			</div><!--row-->
 		</div><!--container-fluid-->
-
+<!-- 
 		<div id="popUpCatSel">
 			<ul class="list-group">
 				<li v-for="(v,k) in sunData" v-on:mouseover="showSel1(v)"
 				class="list-group-item" >
 					<h4>{{v.name}}</h4>
-					<!-- <li v-for="v1 in k.subList[0]">
+					<li v-for="v1 in k.subList[0]">
 						<a v-on:click="hideSel()"><span>{{v1.name}}</span></a>
-					</li> -->
+					</li>
 				</li>
 			</ul>
 		</div><!--popUpCatSel-->
 		
+	<!-- 	<div id="popUpCatSel1">
+			<ul class='list-group'>
+				<li v-for="va in sunData1" class="list-group-item">
+					<a v-on:click="hideSel(va.id)"><h4>{{va.name}}</h4></a>
+				</li>
+			</ul>
+		</div> -->
+		<div id="popUpCatSel">
+			<ul class="list-group">
+				<li v-for="va in sunData" class="list-group-item" v-on:mouseover="showSel1(va.id)">
+					<a v-on:click="hideSel()"><span>{{va.name}}</span></a>
+				</li>
+			</ul>
+		</div><!--popUpCatSel-->
+
 		<div id="popUpCatSel1">
 			<ul class='list-group'>
 				<li v-for="va in sunData1" class="list-group-item">

@@ -8,6 +8,30 @@ $(document).ready(function(){
 		data:{
 			navBar:{
 				'首页':'http://localhost/shapping/index/index.html'
+			},
+			bigContentJson:""
+		},
+		mounted:function(){
+			var that = this
+			//AJAX请求巨屏轮番广告
+			$.ajax({
+				url:"http://localhost:8082/Content?cId=89",
+				dataType:"json",
+				type:"GET",
+				success:function(data){
+					//console.log(data)
+					if (data.status==200) {
+						that.bigContentJson = data.data
+						console.log(that.bigContentJson)
+					}
+				}
+			})
+
+		},
+		methods:{
+			searhKeyword:function(){
+				var keyword = $("#keyword").val();
+				window.location.href="http://localhost/shapping/item/item.html?cid="+keyword
 			}
 		}
 	})

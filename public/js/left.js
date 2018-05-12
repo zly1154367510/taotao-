@@ -24,10 +24,20 @@ $(document).ready(function(){
 				})
 		},
 		methods:{
-			showSel:function(item){
+			showSel:function(pid){
 				var that = this
-				//console.log(item)
-				that.sunData=item.subList
+				
+				$.ajax({
+					url:"http://localhost:8082/sundata?pId="+pid,
+					type:"GET",
+					dataType:"json",
+					success:function(data){
+						if (data.status==200) {
+							that.sunData = data.data
+							//console.log(that.data)
+						}
+					}
+				})
 				//console.log(that.sunData)
 				$("#popUpCatSel1").hide()
 				$("#popUpCatSel").show()
@@ -39,10 +49,21 @@ $(document).ready(function(){
 				$("#popUpCatSel1").hide()
 
 			},
-			showSel1:function(item){
+			showSel1:function(pId){
+		
 				var that = this
-				//console.log(item)
-				that.sunData1=item.subList
+				
+				$.ajax({
+					url:"http://localhost:8082/sundata?pId="+pId,
+					type:"GET",
+					dataType:"json",
+					success:function(data){
+						if (data.status==200) {
+							that.sunData1 = data.data
+							//console.log(that.data)
+						}
+					}
+				})
 				//console.log(that.sunData1)
 				$("#popUpCatSel1").show()
 			},

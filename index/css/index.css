@@ -2,5 +2,12 @@
 	float: left;
 	
 }
+#bigContent{
+	position: absolute;
+	z-index: 999;
+	float: right;
+	width: 60%;
+	margin: 2%;
+}
 
 
