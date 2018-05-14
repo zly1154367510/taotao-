@@ -1,13 +1,46 @@
 #left{
 	float: left;
-	
-}
-#bigContent{
 	position: absolute;
 	z-index: 999;
-	float: right;
-	width: 60%;
+}
+#body{
+	position: relative;
+	left: 15%;
+}
+#bigContent{
+
+	z-index: 888;
+	float: left;
+	width: 50%;
 	margin: 2%;
+
+}
+
+.cc{
+	width: 40%;
+	margin: 5.5%;
+}
+#miniContent{
+	float: left;
+	position: relative;
+	overflow:hidden;
+	height: 475px;
+}
+
+#up img{
+	position: absolute;
+	z-index: 999;
+	left: 6.2%;
+	top: 0%;
+	opacity:0.4;
+}
+
+#down img{
+	position: absolute;
+	z-index: 999;
+	left: 5.8%;
+	top:90%;
+	opacity:0.4;
 }
 
 

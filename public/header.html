@@ -5,34 +5,44 @@
 <title>lili商城</title>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="navbar-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand">
-					<img src="http://localhost/shapping/public/images/logo.png" id="logoImg" height="30px">
-				</a>
-				<p class="navbar-text">
-					<a>亲！请登录</a>
-					<a>
-						<button type="submit" class="btn btn-default">免费注册</button>
-					</a>
-				</p>
-			</div>
-			<div class="navbar-left">
-				<p class="navbar-text navbar-right">用户操作:
-					<a href="">
-						<button type="submit" class="btn btn-default">购物车</button>
-					</a>
-					<a href="">
-						<button type="submit" class="btn btn-default">订单</button>
-					</a>
-				</p>
-			</div>
-		</div>
+	<div class="body">
 		
-	</nav>
-
 	
+		<nav class="navbar navbar-default">
+			<div class="navbar-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand">
+						<img src="http://localhost/shapping/public/images/logo.png" id="logoImg" height="30px">
+					</a>
+
+						<p class="navbar-text" v-if="username==''">
+							<a href="http://localhost/shapping/user/login.html">亲！请登录</a>
+							<a>
+								<button type="submit" class="btn btn-default" href="http://localhost/shapping/user/register.html">免费注册</button>
+							</a>
+						</p>
+						<p class="navbar-text" v-else>
+							<a href="http://localhost/shapping/user/login.html">欢迎{{username}}</a>
+							<a>
+								<button type="submit" class="btn btn-default" href="http://localhost/shapping/user/register.html">免费注册</button>
+							</a>
+						</p>
+				</div>
+				<div class="navbar-left">
+					<p class="navbar-text navbar-right">用户操作:
+						<a href="">
+							<button type="submit" class="btn btn-default">购物车</button>
+						</a>
+						<a href="">
+							<button type="submit" class="btn btn-default">订单</button>
+						</a>
+					</p>
+				</div>
+			</div>
+			
+		</nav>
+
+	</div>
 	  <!-- 新 Bootstrap 核心 CSS 文件 -->
 
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->

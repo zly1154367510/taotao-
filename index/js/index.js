@@ -9,7 +9,8 @@ $(document).ready(function(){
 			navBar:{
 				'首页':'http://localhost/shapping/index/index.html'
 			},
-			bigContentJson:""
+			bigContentJson:"",
+			miniContentJson:""
 		},
 		mounted:function(){
 			var that = this
@@ -22,7 +23,21 @@ $(document).ready(function(){
 					//console.log(data)
 					if (data.status==200) {
 						that.bigContentJson = data.data
-						console.log(that.bigContentJson)
+						//console.log(that.bigContentJson)
+					}
+				}
+			})
+
+			//ajxa请求小屏广告
+			$.ajax({
+				url:"http://localhost:8082/Content?cId=90",
+				dataType:"json",
+				type:"GET",
+				success:function(data){
+					//console.log(data)
+					if (data.status==200) {
+						that.miniContentJson = data.data
+						//console.log(that.miniContentJson)
 					}
 				}
 			})
@@ -32,6 +47,17 @@ $(document).ready(function(){
 			searhKeyword:function(){
 				var keyword = $("#keyword").val();
 				window.location.href="http://localhost/shapping/item/item.html?cid="+keyword
+			},
+			upMiniContent:function(){
+				var top = $("#mini").offset().top-160
+				var left = $("#mini").offset().left
+				$("#mini").offset({top:top,left:left})
+				console.log($("#mini").offset().top)
+			},
+			downMiniContent:function(){
+				var top = $("#mini").offset().top+160
+				var left = $("#mini").offset().left
+				$("#mini").offset({top:top,left:left})
 			}
 		}
 	})
