@@ -21,7 +21,8 @@ $(document).ready(function(){
 							localStorage.setItem("username",$(".username input").val())
 							window.location.href="http://localhost/shapping/index/index.html"
 						}else if (data.status==400) {
-							alert("账号或密码错误")
+							console.log(data.data)
+							alert(data.msg)
 						}
 					}
 				})

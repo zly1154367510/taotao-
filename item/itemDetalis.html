@@ -42,8 +42,17 @@
 						<h1>{{itemJson[0].title}}</h1>
 						<h2>{{itemJson[0].sellPoint}}</h2>
 						<h3>价格:{{itemJson[0].price}}</h3>
+						<h3 id="num">库存:{{itemJson[0].num}}</h3>
 					</div>
 					<hr>
+					<div class="col-md-5">
+					 	<div class="input-group">
+				      		<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" id="addShappingCarNum" class="form-control" placeholder="数量,默认1" >
+				      		<span class="input-group-btn">
+				       		<button class="btn btn-default" type="button" id="addShappingCar" v-on:click="addShappingCar()">加入购物车</button>
+				      		</span>
+					    </div><!-- /input-group -->	
+					</div>
 					<br><br><br><br><br><br><br><br><br><br><br><br>
 					<ul class="nav nav-tabs">
 						<li role="presentation" v-for='item in itemParamGroupJson' v-on:click="requestParamValue(item.id)" class="paramKey"><a >{{item.groupName}}</a></li>

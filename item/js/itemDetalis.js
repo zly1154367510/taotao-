@@ -31,7 +31,7 @@ $(document).ready(function(){
 				success:function(data){
 					if (data.status==200) {
 						that.itemSimilarJson = data.data
-						console.log(that.itemSimilarJson)
+						//console.log(that.itemSimilarJson)
 					}
 				}
 			})
@@ -75,7 +75,7 @@ $(document).ready(function(){
 				success:function(data){
 					if (data.status==200) {
 						that.itemJson = data.data
-						//console.log(that.itemJson)
+						console.log(that.itemJson)
 					}
 			
 				}
@@ -105,7 +105,7 @@ $(document).ready(function(){
 						theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]); 
 					} 
 				} 
-					return theRequest; 
+				return theRequest; 
 			},
 			requestParamValue:function(id){
 				$("#removee").empty();
@@ -122,6 +122,48 @@ $(document).ready(function(){
 						}
 					}
 				})
+			},
+			addShappingCar:function(){
+				var that = this
+				var token = localStorage.getItem("token");
+				var username = localStorage.getItem("username")
+				if (username == undefined) {
+					alert("您还没有登录")
+					return;
+				}
+				var num = parseInt($("#addShappingCarNum").val())
+				if (num>parseInt($("#num").text())) {
+					alert("加入购物车数量超过库存数量")
+					return
+				}
+				
+				if(num==undefined||num==""||isNaN(num)){
+					num = 1
+				}
+				//console.log(num)
+				var iId = that.getRequest()['id']
+				$.ajax({
+					url:"http://localhost:8082/mi/addShappingCar",
+					dataType:"json",
+					type:"POST",
+					headers:{
+						token:token+"&&"+username
+					},
+					data:{
+						"username":username,
+						"iId":iId,
+						"num":num						
+					},
+					success:function(data){
+						console.log(data)
+						if (data.status==200) {
+							alert("添加购物车成功")
+						}else{
+							alert("添加购物车失败")
+						}
+					}
+				})
+				//console.log(requests)
 			}
 		}
 	})
