@@ -158,6 +158,10 @@ $(function(){
 				var username = localStorage.getItem("username")
 				var name = $("#name").val()
 				var address = $("#adderss").val()
+				if (name==undefined||address==undefined) {
+					alert("请完善订单内容")
+					return;
+				}
 				//that.payData
 				$.ajax({
 					url:"http://localhost:8082/mi/addOrder",
@@ -174,7 +178,13 @@ $(function(){
 						token:token+"&&"+username
 					},
 					success:function(data){
-						console.log(data)
+						if (data.status==200) {
+							if (data.data!=0) {
+								alert("提交订单成功")
+							}
+						}else{
+							alert("提交订单失败")
+						}
 					}
 				})
 			}
