@@ -16,7 +16,12 @@ $(document).ready(function(){
 						"password":$(".password input").val(),
 					},
 					success:function(data){
+					
 						if (data.status==200) {
+							if(data.data=="尚未激活"){
+								alert("用户名未激活")
+								return ;
+							}
 							localStorage.setItem('token', data.data);
 							localStorage.setItem("username",$(".username input").val())
 							window.location.href="http://localhost/shapping/index/index.html"
