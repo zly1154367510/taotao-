@@ -180,6 +180,7 @@ $(function(){
 					success:function(data){
 						if (data.status==200) {
 							if (data.data!=0) {
+								$("#orderInput").hide()
 								alert("提交订单成功")
 							}
 						}else{

@@ -99,6 +99,33 @@
 					</div>
 			</div>
 		</div><!--row-->
+
+		<div class="row">
+			<div class="col-md-9">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					  	<h3 class="panel-title">正在进行的秒杀活动</h3>
+					  	<a href="http://localhost/shapping/seckill/seckill.html">查看更多</a>
+					</div>
+					<div class="panel-body">
+					    <p>开始时间:{{seckill.startTime}}</p>
+					    <p>结束时间:{{seckill.endTime}}</p>
+					    <div v-for="item3 in tbSeckiilItems">
+					    	<div class="col-sm-6 col-md-4">
+						    	 <div class="thumbnail">
+							    		<img :src="item3.tbItem.image" width="50%">
+							      		<div class="caption">
+							        	<h3>{{item3.tbItem.title}}</h3>
+							        	<p>{{item3.tbItem.sellPoint}}</p>
+							        	<p><a href="#" class="btn btn-primary" role="button">购买</a> </p>
+							     	</div>
+							    </div>
+							</div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div><!--row-->
 	 	
 		
 	</div>

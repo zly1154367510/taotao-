@@ -10,7 +10,9 @@ $(document).ready(function(){
 				'首页':'http://localhost/shapping/index/index.html'
 			},
 			bigContentJson:"",
-			miniContentJson:""
+			miniContentJson:"",
+			seckill:"",
+			tbSeckiilItems:""
 		},
 		mounted:function(){
 			var that = this
@@ -38,6 +40,25 @@ $(document).ready(function(){
 					if (data.status==200) {
 						that.miniContentJson = data.data
 						//console.log(that.miniContentJson)
+					}
+				}
+			})
+
+			//请求秒杀活动
+			$.ajax({
+				url:"http://localhost:8082/getSameDays",
+				dataType:"json",
+				type:"GET",
+				data:{
+					"position":"0"
+				},
+				async:false, 
+				success:function(res){
+					//console.log(res)
+					if(res.status==200){
+						that.seckill = res.data
+						that.tbSeckiilItems = res.data.tbSeckiilItems
+						console.log(that.tbSeckiilItems)
 					}
 				}
 			})

@@ -56,6 +56,7 @@ $(document).ready(function(){
 							},
 							success:function(data){
 								if (data.status==200) {
+									alert("注册完成")
 									window.location.href="http://localhost/shapping/user/login.html"
 								}else if (data.status==400) {
 									that.paramError="注册失败请重试"

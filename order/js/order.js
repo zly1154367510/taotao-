@@ -35,7 +35,8 @@ $(function(){
 						that.orderJson = data.data
 					//	console.log(that.orderJson)
 					}else{
-						alert("请求失败")
+						that.noLoginImg = "http://localhost/shapping/shappingCar/images/noLoginImg.png"
+						return;
 					}
 				}
 			})

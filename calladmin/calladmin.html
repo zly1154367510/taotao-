@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lili商城</title>
+
+<style type="text/css">
+	body{
+		margin: 100px
+	}
+</style>
+</head>
+<body >
+	<div id="app">
+		
+		<h1>{{compelet}}</h1>
+
+	</div>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	let vm = new Vue({
+		el:"#app",
+		data:{
+			firstName:"张三"
+			lastName:"三"
+		},
+		computed:{
+			compelet:function(){
+				return firstName+" "+lastName
+			}
+		}
+	})
+</script>
+
+</body>
+</html>
