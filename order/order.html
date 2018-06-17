@@ -57,10 +57,17 @@
 												{{item.payment}}
 											</td>
 											<td>
-												<div v-for="i in item.shappingCars">
-													{{i.tbItem.title}}
+												<div v-if="item.shappingCars.length!=0">
+													<div v-for="i in item.shappingCars">
+														{{i.tbItem.title}}
+														<br>
+														数量:{{i.num}}
+													</div>
+												</div>
+												<div v-else>
+													{{item.tbSeckiilSuccess.tbSeckiilItem.tbItem.title}}
 													<br>
-													数量:{{i.num}}
+													数量:1			
 												</div>
 											</td>									
 										</tr>

@@ -8,6 +8,14 @@
 	#body{
 		margin: 0 5% 0 5%
 	}
+	#orderInput{
+		display: none;
+		position: absolute;
+		top:20%;
+		left:20%;
+		background-color: #99ccff
+
+	}
 </style>
 
 </head>
@@ -24,11 +32,12 @@
 				 	</li>  
 				</ol>
 			</div>
+			
+			
 			<div class="col-md-9"  v-for="item in seckill">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 					  	<h3 class="panel-title">今天正在进行的秒杀活动</h3>
-					  	
 					</div>
 					<div class="panel-body">
 					    <p>开始时间:{{item.startTime}}</p>
@@ -40,7 +49,13 @@
 							      		<div class="caption">
 							        	<h3>{{item3.tbItem.title}}</h3>
 							        	<p>{{item3.tbItem.sellPoint}}</p>
-							        	<p><a href="#" class="btn btn-primary" role="button">购买</a> </p>
+							        	<p>活动价格:￥{{item3.newPrice}}</p>
+							        	<div v-if="item.flag">
+							        		<p><a href="#" v-on:click="purchase(item3.id,item3.newPrice)" class="btn btn-primary" role="button">购买</a> </p>
+							     		</div>
+							     		<div v-else>
+							     			<p><a href="#" class="btn btn-primary disabled " role="button">活动还没开始</a> </p>
+							     		</div>
 							     	</div>
 							    </div>
 							</div>
@@ -48,9 +63,23 @@
 					</div>
 				</div>
 			</div>
+			
 		</div><!--row-->
 	 	
-		
+		<div id="orderInput" class="col-md-6">
+			<h3>结算</h3>
+				<input type="hidden" name="id">
+				<input type="hidden" name="price">
+				<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" >收货地址</span>
+				  	<input type="text" class="form-control" id="adderss" placeholder="address" aria-describedby="sizing-addon1">
+				</div>
+				<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" >收件姓名</span>
+				  	<input type="text" class="form-control" id="name" placeholder="name" aria-describedby="sizing-addon1">
+				</div>
+				<input type="button" class="btn btn-default" v-on:click="purchaseDo()" value="提交"></input>
+		</div>
 	</div>
 </div>
 

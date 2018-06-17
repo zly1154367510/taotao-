@@ -12,7 +12,9 @@ $(document).ready(function(){
 			bigContentJson:"",
 			miniContentJson:"",
 			seckill:"",
-			tbSeckiilItems:""
+			tbSeckiilItems:"",
+			flag:false,
+			serviceTime:''
 		},
 		mounted:function(){
 			var that = this
@@ -44,6 +46,19 @@ $(document).ready(function(){
 				}
 			})
 
+			//请服务器系统时间
+			$.ajax({
+				url:"http://localhost:8082/getServiceTime",
+				dataType:"json",
+				type:"GET",
+				async:false, 
+				success:function(res){
+					if(res.status==200){
+						that.serviceTime = res.data
+					}
+				}
+			})
+
 			//请求秒杀活动
 			$.ajax({
 				url:"http://localhost:8082/getSameDays",
@@ -54,14 +69,16 @@ $(document).ready(function(){
 				},
 				async:false, 
 				success:function(res){
-					//console.log(res)
+					console.log(res)
 					if(res.status==200){
 						that.seckill = res.data
 						that.tbSeckiilItems = res.data.tbSeckiilItems
-						console.log(that.tbSeckiilItems)
+						//console.log(that.tbSeckiilItems)
 					}
 				}
 			})
+			this.flag = this.$options.methods.seckillStartJudgment(that.seckill,that.serviceTime)
+			//console.log(this.$options.methods.seckillStartJudgment(that.seckill,that.serviceTime))
 
 		},
 		methods:{
@@ -79,6 +96,14 @@ $(document).ready(function(){
 				var top = $("#mini").offset().top+160
 				var left = $("#mini").offset().left
 				$("#mini").offset({top:top,left:left})
+			},
+			seckillStartJudgment:function(seckill,serviceTime){
+				if(seckill.startTime<serviceTime && seckill.endTime>serviceTime){
+					return true;
+				}else{
+					return false;
+				}
+
 			}
 		}
 	})

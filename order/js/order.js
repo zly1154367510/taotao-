@@ -30,10 +30,10 @@ $(function(){
 					"username":username
 				},
 				success:function(data){
-					//console.log(data)
+					console.log(data)
 					if (data.status==200) {
 						that.orderJson = data.data
-					//	console.log(that.orderJson)
+						
 					}else{
 						that.noLoginImg = "http://localhost/shapping/shappingCar/images/noLoginImg.png"
 						return;

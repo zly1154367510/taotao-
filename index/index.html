@@ -117,7 +117,12 @@
 							      		<div class="caption">
 							        	<h3>{{item3.tbItem.title}}</h3>
 							        	<p>{{item3.tbItem.sellPoint}}</p>
-							        	<p><a href="#" class="btn btn-primary" role="button">购买</a> </p>
+							        	<div v-if="flag">
+							        		<p><a href="#" class="btn btn-primary " role="button">购买</a> </p>
+							        	</div>
+							        	<div v-else>
+							        		<p><a href="#" class="btn btn-primary disabled " role="button">活动还没开始</a> </p>
+							        	</div>
 							     	</div>
 							    </div>
 							</div>
