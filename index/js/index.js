@@ -63,7 +63,7 @@ $(document).ready(function(){
 			$.ajax({
 				url:"http://localhost:8082/getSameDays",
 				dataType:"json",
-				type:"GET",
+				type:"jsonp",
 				data:{
 					"position":"0"
 				},
@@ -75,6 +75,15 @@ $(document).ready(function(){
 						that.tbSeckiilItems = res.data.tbSeckiilItems
 						//console.log(that.tbSeckiilItems)
 					}
+				}
+			})
+
+			$.ajax({
+				url:"http://api.map.baidu.com/location/ip?ak=8FBYBsGUIWYhleaueG1ItNiyZ1iXMra6",
+				dataType:"json",
+				type:"GET",
+				success:(res)=>{
+					console.log(res)
 				}
 			})
 			this.flag = this.$options.methods.seckillStartJudgment(that.seckill,that.serviceTime)
@@ -107,6 +116,6 @@ $(document).ready(function(){
 			}
 		}
 	})
-		
+	
 	
 })
