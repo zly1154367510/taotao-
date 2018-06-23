@@ -3,6 +3,11 @@ $(document).ready(function(){
 	$("#header").load("http://localhost/shapping/public/header.html")
 	$("#left").load("http://localhost/shapping/public/left.html")
 	//vm.header.put("首页","http://localhost/shapping/index/index.html")
+
+	var map = new BMap.Map("allmap");            // 创建Map实例
+	var point = new BMap.Point(116.404, 39.915); // 创建点坐标
+	map.centerAndZoom(point,15);                 
+	map.enableScrollWheelZoom();   
 	var indexVM = new Vue({
 		el:"#body",
 		data:{
@@ -14,7 +19,9 @@ $(document).ready(function(){
 			seckill:"",
 			tbSeckiilItems:"",
 			flag:false,
-			serviceTime:''
+			serviceTime:'',
+			userPosition:"",
+			weather:""
 		},
 		mounted:function(){
 			var that = this
@@ -63,13 +70,12 @@ $(document).ready(function(){
 			$.ajax({
 				url:"http://localhost:8082/getSameDays",
 				dataType:"json",
-				type:"jsonp",
+				type:"get",
 				data:{
 					"position":"0"
 				},
-				async:false, 
 				success:function(res){
-					console.log(res)
+				//	console.log(res)
 					if(res.status==200){
 						that.seckill = res.data
 						that.tbSeckiilItems = res.data.tbSeckiilItems
@@ -80,13 +86,40 @@ $(document).ready(function(){
 
 			$.ajax({
 				url:"http://api.map.baidu.com/location/ip?ak=8FBYBsGUIWYhleaueG1ItNiyZ1iXMra6",
-				dataType:"json",
+				dataType:"jsonp",
 				type:"GET",
+				async:false, 
 				success:(res)=>{
-					console.log(res)
+					that.userPosition = res
+					var city = that.userPosition.content.address_detail.city
+					//var city = that.$options.methods.cityHandle(that.userPosition.content.address)
+					url = "http://localhost:8082/weather/"+city
+					$.ajax({
+						url:url,
+						dataType:"json",
+						type:"GET",
+						success:(res)=>{
+							if(res.status == 200){
+								that.weather = res.data
+								console.log(that.weather)
+							}else if(res.status == 401){
+								alert(res.data)
+							}
+						},
+						error:(data)=>{
+							console.log("data")
+						}
+					})
+					
 				}
 			})
+			//console.log(that.userPosition)
+			//alert("aaa")
+			// var city = this.$options.methods.cityHandle(that.userPosition.content.address)
+			// alert(city)
+			
 			this.flag = this.$options.methods.seckillStartJudgment(that.seckill,that.serviceTime)
+		
 			//console.log(this.$options.methods.seckillStartJudgment(that.seckill,that.serviceTime))
 
 		},
@@ -113,6 +146,21 @@ $(document).ready(function(){
 					return false;
 				}
 
+			},
+			initMap:function(){
+				console.log("hahah")
+				console.log(this.data.userPosition)
+		
+				var map = new BMap.Map("allmap");            // 创建Map实例
+				var point = new BMap.Point(116.404, 39.915); // 创建点坐标
+				map.centerAndZoom(point,15);                 
+				map.enableScrollWheelZoom();   
+			},
+			cityHandle:function(position){
+				var startIndex = position.indexOf("省")
+				if(startIndex != -1){
+					return position.slice(startIndex,len(position))
+				}
 			}
 		}
 	})
