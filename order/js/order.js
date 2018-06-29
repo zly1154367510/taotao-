@@ -1,11 +1,11 @@
 $(function(){
-	$("#header").load("http://localhost/shapping/public/header.html")
+	$("#header").load("http://localhost:8082/shapping/public/header.html")
 
 	var orderVM = new Vue({
 		el:"#body",
 		data:{
 			navBar:{
-				'首页':'http://localhost/shapping/index/index.html',
+				'首页':'http://localhost:8082/shapping/index/index.html',
 				'订单':'',
 			},
 			noLoginImg:"",
@@ -16,7 +16,7 @@ $(function(){
 			var token = localStorage.getItem("token");
 			var username = localStorage.getItem("username")
 			if (token == undefined || username == undefined) {
-				that.noLoginImg = "http://localhost/shapping/shappingCar/images/noLoginImg.png"
+				that.noLoginImg = "http://localhost:8082/shapping/shappingCar/images/noLoginImg.png"
 				return;
 			}
 			$.ajax({
@@ -35,7 +35,7 @@ $(function(){
 						that.orderJson = data.data
 						
 					}else{
-						that.noLoginImg = "http://localhost/shapping/shappingCar/images/noLoginImg.png"
+						that.noLoginImg = "http://localhost:8082/shapping/shappingCar/images/noLoginImg.png"
 						return;
 					}
 				}

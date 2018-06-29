@@ -1,12 +1,12 @@
 $(document).ready(function(){
-	$("#header").load("http://localhost/shapping/public/header.html")
+	$("#header").load("http://localhost:8082/shapping/public/header.html")
 
 
 	var vm = new Vue({
 		el:"#body",
 		data:{
 			navBar:{
-				'首页':'http://localhost/shapping/index/index.html',
+				'首页':'http://localhost:8082/shapping/index/index.html',
 				'联系卖家':''
 			},
 			json:'',

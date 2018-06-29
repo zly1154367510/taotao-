@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>lili商城</title>
-<link rel="stylesheet" type="text/css" href="http://localhost/shapping/shappingCar/css/shappingCar.css">
+<link rel="stylesheet" type="text/css" href="http://localhost:8082/shapping/shappingCar/css/shappingCar.css">
 
 </style>
 </head>
@@ -99,6 +99,19 @@
 			<div class="input-group input-group-lg">
 			  	<span class="input-group-addon" >收件姓名</span>
 			  	<input type="text" class="form-control" id="name" placeholder="name" aria-describedby="sizing-addon1">
+			</div>
+			<!-- <div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					使用优惠券（只能使用一张） <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<div v-for="(item,index) in couponJson">
+				  		<li><a v-on:click = "useCoupon(index)" >满{{item.tbCoupon.condition}}减{{item.tbCoupon.discount}}卷 X {{item.num}}</a></li>
+					</div>
+				</ul>
+			</div> -->
+			<div v-for="(item,index) in couponJson">
+				<li><a v-on:click = "useCoupon(index)" >满{{item.tbCoupon.condition}}减{{item.tbCoupon.discount}}卷 X {{item.num}}</a></li>
 			</div>
 			<p>需要交付金额:{{payPrice}}</p>
 			<input type="button" class="btn btn-default" v-on:click="subOrderDo()" value="提交"></input>

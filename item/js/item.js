@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("#popUpCatSel").css("top", $(document).scrollTop()+20 )
-	$("#header").load("http://localhost/shapping/public/header.html")
-	$("#left").load("http://localhost/shapping/public/left.html")
+	$("#header").load("http://localhost:8082/shapping/public/header.html")
+	$("#left").load("http://localhost:8082/shapping/public/left.html")
 
 	var vm = new Vue({
 		el:"#body",

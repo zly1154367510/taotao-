@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("#header").load("http://localhost/shapping/public/header.html")
+	$("#header").load("http://localhost:8082/shapping/public/header.html")
 
 	$('.nav').on("click",".paramKey",function(){
 		console.log("我是变色方法")
@@ -42,7 +42,7 @@ $(document).ready(function(){
 		el:"#body",
 		data:{
 			navBar:{
-				'首页':'http://localhost/shapping/index/index.html',
+				'首页':'http://localhost:8082/shapping/index/index.html',
 				'商品列表':'',
 				'商品详情':''
 			},
@@ -65,7 +65,7 @@ $(document).ready(function(){
 				} 
 			} 
 			var that = this
-			that.navBar['商品列表'] = 'http://localhost/shapping/item/item.html?cid='+theRequest['cid']
+			that.navBar['商品列表'] = 'http://localhost:8082/shapping/item/item.html?cid='+theRequest['cid']
 
 			//ajax请求商品详情数据
 			$.ajax({

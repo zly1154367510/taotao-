@@ -2,17 +2,12 @@ $(document).ready(function(){
 	$("#popUpCatSel").css("top", $(document).scrollTop()+20 )
 	$("#header").load("http://localhost/shapping/public/header.html")
 	$("#left").load("http://localhost/shapping/public/left.html")
-	//vm.header.put("首页","http://localhost/shapping/index/index.html")
-
-	var map = new BMap.Map("allmap");            // 创建Map实例
-	var point = new BMap.Point(116.404, 39.915); // 创建点坐标
-	map.centerAndZoom(point,15);                 
-	map.enableScrollWheelZoom();   
+	//vm.header.put("首页","http://localhost:8082/shapping/index/index.html")
 	var indexVM = new Vue({
 		el:"#body",
 		data:{
 			navBar:{
-				'首页':'http://localhost/shapping/index/index.html'
+				'首页':'http://localhost:8082/shapping/index/index.html'
 			},
 			bigContentJson:"",
 			miniContentJson:"",
@@ -126,7 +121,7 @@ $(document).ready(function(){
 		methods:{
 			searhKeyword:function(){
 				var keyword = $("#keyword").val();
-				window.location.href="http://localhost/shapping/item/item.html?cid="+keyword
+				window.location.href="http://localhost:8082/shapping/item/item.html?cid="+keyword
 			},
 			upMiniContent:function(){
 				var top = $("#mini").offset().top-160
